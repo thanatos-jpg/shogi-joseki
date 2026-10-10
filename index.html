@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7a5a2a">
+  <title>将棋定跡トレーナー</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="home" class="screen">
+    <header class="top">
+      <h1>将棋定跡トレーナー</h1>
+      <p class="sub">盤を自分で動かして、振り飛車の定跡を身につける</p>
+    </header>
+    <div id="lineList"></div>
+    <p class="note">「要確認」は作成中のたたき台です。手順は必ず棋書や棋譜で照らし合わせてください。</p>
+  </main>
+
+  <section id="play" class="screen" hidden>
+    <header class="bar">
+      <button id="btnBack" class="ghost" aria-label="一覧へ戻る">‹ 一覧</button>
+      <div id="playTitle" class="bar-title"></div>
+      <button id="btnFlip" class="ghost" aria-label="盤の向きを反転">⇅</button>
+    </header>
+
+    <div id="handTop" class="hand top"></div>
+    <div id="boardWrap"><svg id="board" role="img" aria-label="将棋盤"></svg></div>
+    <div id="handBottom" class="hand bottom"></div>
+
+    <div id="panel" class="panel"></div>
+    <div id="controls" class="controls"></div>
+    <div id="moveList" class="movelist" hidden></div>
+  </section>
+
+  <div id="dialog" class="dialog" hidden>
+    <div class="dialog-box">
+      <p id="dialogText"></p>
+      <div class="dialog-buttons">
+        <button id="dlgPromote" class="primary">成る</button>
+        <button id="dlgKeep">成らない</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/shogi.js"></script>
+  <script src="js/joseki.js"></script>
+  <script src="data/shikenbisha-vs-bogin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
