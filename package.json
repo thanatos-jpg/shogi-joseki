@@ -1,0 +1,8 @@
+{
+  "name": "shogi-joseki",
+  "private": true,
+  "description": "将棋定跡トレーナー（振り飛車）",
+  "scripts": {
+    "test": "node tests/engine.test.js && node tests/validate.js"
+  }
+}
