@@ -9,6 +9,20 @@
   --ng: #c0392b;
   --card: #fffaf0;
   --border: #dccfb6;
+  --btn: #ffffff;
+  --btn-active: #f1e6cf;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1913; --ink: #efe6d4; --muted: #a79880; --card: #27231b; --border: #433b2d;
+    --btn: #2f2a20; --btn-active: #3b3427; --accent: #8f6a2c; --ok: #4cc27f; --ng: #ee6a58;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1913; --ink: #efe6d4; --muted: #a79880; --card: #27231b; --border: #433b2d;
+  --btn: #2f2a20; --btn-active: #3b3427; --accent: #8f6a2c; --ok: #4cc27f; --ng: #ee6a58;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); }
@@ -20,12 +34,13 @@ body {
 [hidden] { display: none !important; }
 
 button {
-  font: inherit; color: inherit; background: #fff; border: 1px solid var(--border);
+  font: inherit; color: inherit; background: var(--btn); border: 1px solid var(--border);
   border-radius: 10px; min-height: 44px; padding: 0 14px; cursor: pointer;
 }
-button:active { background: #f1e6cf; }
+button:active { background: var(--btn-active); }
 button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 button.primary:active { background: #5f4620; }
+button.primary:focus-visible, button:focus-visible { outline: 3px solid #2a8bd6; outline-offset: 2px; }
 button.ghost { background: transparent; border-color: transparent; min-width: 44px; }
 button:disabled { opacity: .4; }
 
@@ -44,7 +59,7 @@ button:disabled { opacity: .4; }
 .note { font-size: 12px; color: var(--muted); margin: 18px 4px; line-height: 1.6; }
 
 /* 対局画面 */
-.bar { display: flex; align-items: center; gap: 4px; padding: 6px 0; position: sticky; top: 0; background: var(--bg); z-index: 5; }
+.bar { display: flex; align-items: center; gap: 4px; padding: 6px 0; position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 5; }
 .bar-title { flex: 1; text-align: center; font-weight: 600; font-size: 15px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .hand { display: flex; align-items: center; gap: 6px; min-height: 40px; padding: 2px 4px; font-size: 12px; color: var(--muted); }
@@ -52,11 +67,11 @@ button:disabled { opacity: .4; }
 .hand .items { display: flex; gap: 6px; flex-wrap: wrap; }
 .hp {
   min-height: 40px; min-width: 40px; padding: 0 8px; border-radius: 8px; font-size: 20px; line-height: 1;
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif; background: #fff8e6; color: var(--ink);
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif; background: #fff8e6; color: #2b2118;
 }
 .hp small { font-size: 12px; margin-left: 2px; }
 .hand.top .hp { pointer-events: none; }
-.hp.sel { outline: 3px solid #2a8bd6; background: #dff0ff; }
+.hp.sel { outline: 3px solid #2a8bd6; background: #dff0ff; color: #2b2118; }
 .hp.hint { outline: 3px dashed #e0861a; }
 
 #boardWrap { width: 100%; }
@@ -85,7 +100,7 @@ button:disabled { opacity: .4; }
 .movelist .no { font-size: 11px; color: var(--muted); align-self: center; margin-left: 4px; }
 
 .dialog { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: flex; align-items: center; justify-content: center; z-index: 20; }
-.dialog-box { background: #fff; border-radius: 14px; padding: 18px; width: min(320px, 86vw); text-align: center; }
+.dialog-box { background: var(--card); color: var(--ink); border-radius: 14px; padding: 18px; width: min(320px, 86vw); text-align: center; }
 .dialog-box p { margin: 0 0 14px; font-weight: 600; }
 .dialog-buttons { display: flex; gap: 10px; }
 .dialog-buttons button { flex: 1; min-height: 48px; font-size: 16px; }
